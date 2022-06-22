@@ -39,15 +39,36 @@ decrementCounterAction()
 const addUserAction = (/*user*/) => {
     return {
         type: ADD_USER,
-        payload: {name: 'CR7'}
+        payload: { name: 'CR7' }
         // payload: user
     }
 }
 
 decrementCounterAction()
 
+// create reducer for counter
+const counterReducer = (state = initialCounterState, action) => {
 
+    switch (action.type) {
+        case INCREMENT:
+            return {
+                ...state,
+                count: state.count + 1
+            }
+
+        case DECREMENT:
+            return {
+                ...state,
+                count: state.count - 1
+            }
+
+        default:
+            state;
+    }
+}
+
+// -------- steps -------------
 // 1. state
 // 2. dispatch action
-// 3. reducer
+// 3. reducer (reducer is a pure function, it handle all of our logic based on action type.)
 // 4. store
