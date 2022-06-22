@@ -1,3 +1,6 @@
+const {createSrite, createStore} = require("redux")
+
+
 // defining constants
 const INCREMENT = 'INCRIMENT'
 const DECREMENT = 'DECRIMENT'
@@ -67,8 +70,25 @@ const counterReducer = (state = initialCounterState, action) => {
     }
 }
 
-// -------- steps -------------
+
+// create redux store
+const store = createStore(counterReducer)
+
+store.subscribe(()=>{
+    console.log(store.getState());
+})
+
+// duspatch action
+store.dispatch(incrementCounterAction())
+store.dispatch(incrementCounterAction())
+store.dispatch(incrementCounterAction())
+store.dispatch(decrementCounterAction())
+
+
+
+
+// -------- note -------------
 // 1. state
 // 2. dispatch action
 // 3. reducer (reducer is a pure function, it handle all of our logic based on action type.)
-// 4. store
+// 4. store --- (three method of store: 1. getStore() , 2. dispatch() , 3. subscribe() )
