@@ -1,13 +1,13 @@
 const { createStore } = require("redux")
 
+//--------- productReducer ----------
 
 // products constants
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 
-//--------- productReducer ----------
 
-// action
+// product state
 const initialProductReducer = {
     products: ['sugur', 'salt'],
     numberOfProducts: 2,
@@ -48,6 +48,17 @@ const productReducer = (state = initialProductReducer, action) => {
 }
 
 //-------- cartReducer ------------
+
+// cart constants
+const GET_CART_ITEMS = 'GET_CART_ITEMS'
+const ADD_CART_ITEM = 'ADD_CART_ITEM'
+
+// Cart state
+const initialCartState = {
+    cart: ['sugur'],
+    numberOfProducts: 1,
+}
+
 
 
 // store
