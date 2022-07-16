@@ -13,6 +13,7 @@ const initialProductReducer = {
     numberOfProducts: 2,
 }
 
+// product actions
 const getProducts = () => {
     return {
         type: GET_PRODUCTS,
@@ -57,6 +58,20 @@ const ADD_CART_ITEM = 'ADD_CART_ITEM'
 const initialCartState = {
     cart: ['sugur'],
     numberOfProducts: 1,
+}
+
+// cart actions
+const getCart = () => {
+    return {
+        type: GET_CART_ITEMS,
+    }
+}
+
+const addCart = (product) => {
+    return {
+        type: ADD_CART_ITEM,
+        payload: product,
+    }
 }
 
 
