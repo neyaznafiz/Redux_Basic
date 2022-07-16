@@ -1,15 +1,16 @@
+const { createStore } = require("redux")
 
-//--------- productReducer ----------
 
 // products constants
 const GET_PRODUCTS = 'GET_PRODUCTS'
-const ADD_PRODUCTS = 'ADD_PRODUCTS'
+const ADD_PRODUCT = 'ADD_PRODUCT'
 
+//--------- productReducer ----------
 
-
+// action
 const initialProductReducer = {
     products: ['sugur', 'salt'],
-    numberofProducts: 2,
+    numberOfProducts: 2,
 }
 
 const getProducts = () => {
@@ -18,13 +19,42 @@ const getProducts = () => {
     }
 }
 
-const addProducts = (product) => {
+const addProduct = (product) => {
     return {
-        type: ADD_PRODUCTS,
+        type: ADD_PRODUCT,
         payload: product,
     }
 }
 
+// productReducer
+const productReducer = (state = initialProductReducer, action) => {
+    switch (action.type) {
+        case GET_PRODUCTS:
 
+            return {
+                ...state,
+            };
+
+        case ADD_PRODUCT:
+
+            return {
+                products: [...state.products, action.payload],
+                numberOfProducts: state.numberOfProducts + 1,
+            };
+
+        default:
+            state;
+    }
+}
 
 //-------- cartReducer ------------
+
+
+// store
+const store = createStore(productReducer)
+store.subscribe(() => {
+    console.log(store.getState());
+})
+
+store.dispatch(getProducts())
+store.dispatch(addProduct('pen'))
